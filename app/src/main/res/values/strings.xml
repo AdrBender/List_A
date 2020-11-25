@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">List_A</string>
+	
+	<string name="empty_list">Opss. Nenhhuma lista, crie uma.</string>
+	<string name ="empty_list_items">Nenhum item, adicione alguns.</string>
+</resources>
