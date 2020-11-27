@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 				String idLista = String.valueOf(li.getId());
 				String nomeLista = li.getLista();
 				
+				Toast.makeText(getApplicationContext(), "Id da Lista: "+idLista, Toast.LENGTH_SHORT).show();
 				//Bundle bundle = new Bundle();
 					//bundle.putInt("id", idLista);
 					//bundle.putString("nomeLista", nomeLista);

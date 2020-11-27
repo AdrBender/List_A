@@ -86,13 +86,14 @@ public class ListaItensActivity extends AppCompatActivity {
 	@Override
     protected void onResume() {
         carregarLista();
-		/*
+		
+		// Exibe os nomes e id`s dos itens da lista
 		for (Item i : listItems) {
 			StringBuffer sb = new StringBuffer();
 			sb.append("Id "+i.getIdItem()+"\n");
 			sb.append("Item "+i.getItem());
 			Toast.makeText(ListaItensActivity.this, sb.toString(), Toast.LENGTH_SHORT).show(); 
-		}*/
+		}
         super.onResume();
     }
 }

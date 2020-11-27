@@ -37,7 +37,7 @@ public class ProdutosActivity extends AppCompatActivity {
 		b = getIntent().getExtras();
 		if( b != null ) {
 			idLista = b.getString("id");
-			Toast.makeText(this, "Listaa id: "+idLista, Toast.LENGTH_LONG).show(); 
+			Toast.makeText(this, "Lista id: "+idLista, Toast.LENGTH_LONG).show(); 
 		}else{
 			Toast.makeText(this, "id da lista esta null", Toast.LENGTH_LONG).show(); 
 		}
