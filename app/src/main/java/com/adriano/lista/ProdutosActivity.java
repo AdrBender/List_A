@@ -39,7 +39,7 @@ public class ProdutosActivity extends AppCompatActivity {
 			idLista = b.getString("id");
 			Toast.makeText(this, "Lista id: "+idLista, Toast.LENGTH_LONG).show(); 
 		}else{
-			Toast.makeText(this, "id da lista esta null", Toast.LENGTH_LONG).show(); 
+			Toast.makeText(this, "id da lista está null", Toast.LENGTH_LONG).show(); 
 		}
 		
 		expandableListView = (ExpandableListView) findViewById(R.id.exp_list_view);
@@ -95,433 +95,141 @@ public class ProdutosActivity extends AppCompatActivity {
         expandableListTitle = new ArrayList<String>();
         expandableList = new HashMap<String, List<String>>();
 
-        expandableListTitle.add("Graos");
-		expandableListTitle.add("Verduras e Legumes");
+		expandableListTitle.add("Bebidas");
+		expandableListTitle.add("Caldos, Molhos e Condimentos");
+		expandableListTitle.add("Carnes e Frios");
+		expandableListTitle.add("Enlatados e Conservas");
         expandableListTitle.add("Frutas");
-        expandableListTitle.add("Sucos");
-		expandableListTitle.add("Molhos");
-		expandableListTitle.add("Caldos");
-		expandableListTitle.add("Outros condimentos");
+		expandableListTitle.add("Grãos e Cereais");
+        expandableListTitle.add("Higiene Pessoal");
+		expandableListTitle.add("Limpeza");
+		expandableListTitle.add("Sucos");
+		expandableListTitle.add("Verduras e Legumes");
+		
+		
+//Lista de Bebidas
+		List<String> bebidas = new ArrayList<String>();
+		bebidas.add("Achocolatado");
+		bebidas.add("Água de Côco");
+		bebidas.add("Água Mineral");
+		bebidas.add("Cachaça");
+		bebidas.add("Café");
+		bebidas.add("Cappuccino");
+		bebidas.add("Cerveja");
+		bebidas.add("Chá");
+		bebidas.add("Energético");
+		bebidas.add("Iogurte");
+		bebidas.add("Leite");
+		bebidas.add("Pó para Refresco");
+		bebidas.add("Polpa");
+		bebidas.add("Suco Concentrado");
+		bebidas.add("Vinhos");
+		bebidas.add("Vodca");
+		
+		
+//Lista de Caldos, Molhos e Condimentos
+		List<String> cald_molh_cond = new ArrayList<String>();
+		cald_molh_cond.add("Caldo para Arroz Branco");
+		cald_molh_cond.add("Caldo de Carne");
+        cald_molh_cond.add("Caldo de Bacon");
+        cald_molh_cond.add("Caldo de Cebola e Alho");
+        cald_molh_cond.add("Caldo de Costela");
+		cald_molh_cond.add("Caldo de Churrasco");
+        cald_molh_cond.add("Caldo de Galinha");
+		cald_molh_cond.add("Caldo de Legumes e Verduras");
+		cald_molh_cond.add("Caldo de Picanha");
+        cald_molh_cond.add("Molho de Atum");
+		cald_molh_cond.add("Molho Barbecue");
+		cald_molh_cond.add("Molho Bolonhesa");
+        cald_molh_cond.add("Molho Bordelaise");
+		cald_molh_cond.add("Molho Inglês");
+		cald_molh_cond.add("Molho de Atum");
+		cald_molh_cond.add("Molho de Pimenta");
+		cald_molh_cond.add("Molho Shoyo");
+		cald_molh_cond.add("Molho de Soja");
+		cald_molh_cond.add("Molho Teriyaki");
+		cald_molh_cond.add("Molho de Tomate");
+		cald_molh_cond.add("Molho de Tucupi");
+		cald_molh_cond.add("Alho");
+		cald_molh_cond.add("Alho em pó");
+		cald_molh_cond.add("Alho Porró");
+		cald_molh_cond.add("Almeirão");
+		cald_molh_cond.add("Erva Doce");
+        cald_molh_cond.add("Gengibre");
+        cald_molh_cond.add("Hortelã");
+		cald_molh_cond.add("Óleo de Dendê");
+		cald_molh_cond.add("Óleo de Amêndoa");
+        cald_molh_cond.add("Orégano");
+		cald_molh_cond.add("Salsa");
+		cald_molh_cond.add("Salsa");
+        cald_molh_cond.add("Pimenta");
+		cald_molh_cond.add("Sal");
+		cald_molh_cond.add("Salsa");
+		cald_molh_cond.add("Vinagre");
+		cald_molh_cond.add("Vinagreira ou Caruru Azedo");
+		
+		
+//Lista de Carnes e Frios
+		List<String> carnes_frios = new ArrayList<String>();
+		carnes_frios.add("Apresuntado");
+        carnes_frios.add("Blanquet de Peru");
+        carnes_frios.add("Chester");
+		carnes_frios.add("Copa");
+        carnes_frios.add("Mortadela");
+		carnes_frios.add("Pasta de Enchova");
+		carnes_frios.add("Peito de Frango");
+		carnes_frios.add("Peito de Peru");
+		carnes_frios.add("Presunto");
+		carnes_frios.add("Ricota");
+		carnes_frios.add("Rosbife");
+		carnes_frios.add("Salame");
+		carnes_frios.add("Salaminho");
+		carnes_frios.add("Salsicha");
+		carnes_frios.add("Salsichão");
+		carnes_frios.add("Bacon");
+		carnes_frios.add("Carne de Hambúrguer");
+		carnes_frios.add("Empanados de Frango");
+		carnes_frios.add("Tender");
 
-        List<String> graos = new ArrayList<String>();
-        graos.add("Alpiste");
-        graos.add("Amendoim");
-        graos.add("Arroz");
-        graos.add("Aspargo");
-        graos.add("Abóbora Moranga");
-        graos.add("Abobrinha");
-        graos.add("Abricó");
-		/*
-		 Alho
-		 Alho em pó
-		 Alho Porro
-		 Alho, folha
-		 Almecega
-		 Almeirão
 		 
-		 Amaranto
-		 Amêndoa
-		 Amêndoa Doce
-		 Amêndoa Tropical
-		 
-		 Amendoim Amarelo, cru
-		 Amendoim Preto, cru
-		 Amendoim Roxo, cru
-		 Amendoim, caramelizado
-		 Amendoim, coberto com chococate
-		 Amendoim, cozido
-		 Amendoim, creme de
-		 Amendoim, torrado com sal
-		 Amido de Arroz
-		 Amido de Milho (cozido)
-		 Amido de Milho (cru)
-		 Ananás
-		 Ançarinha
-		 Angu de Milho
-		 Araça
-		 Araruta, tubérculo
-		 Arobon
-		 Arroz Agulha Brunido, cru
-		 Arroz Agulha Integral, cru
-		 Arroz Banhado de Iguapé, cru
-		 Arroz Branco, cozido
-		 Arroz Branco, média, cru
-		 Arroz Carolina, cru
-		 Arroz Carreteiro Cozinha e Sabor TIO JOÃO
-		 Arroz Carreteiro MAGGI
-		 Arroz Cozinha Italiana TIO JOÃO
-		 Arroz Cozinha Japonesa TIO JOÃO
-		 Arroz Cozinha Tailandesa TIO JOÃO
-		 Arroz de Maio Brunido, cru
-		 Arroz de Maio Integral, cru
-		 Arroz do Japão, cru
-		 Arroz Integral, cozido
-		 Arroz Integral, cru
-		 Arroz Miúdo do Peru, farinha
-		 Arroz Miúdo do Peru, grão, cru
-		 Arroz Moçambique Brunido, cru
-		 Arroz Moçambique Integral, cru
-		 Arroz Pardo, cru
-		 Arroz polido, cozido
-		 Arroz Polido, cru
-		 Arroz Preto de Pindamonhangaba, cru
-		 Arroz Selvagem TIO JOÃO
-		 Arroz Selvagem, cru
-		 Arroz Vitaminado TIO JOÃO
-		 Arroz, bolinho frito
-		 Arroz, cozido
-		 Arroz, farelo de
-		 Arroz, risoto, à la grega
-		 Aspargo cozido
-		 Aspargo em conserva
-		 Aveia de preparo instantaneo
-		 Aveia, flocos cozidos
-		 Aveia, flocos crus
-		 Aveia, grão cru
-		*/
-		List<String> verd_leg = new ArrayList<String>();
-        verd_leg.add("Abiu");
-        verd_leg.add("Abóbora Chila");
-        verd_leg.add("Abóbora d' Água");
-        verd_leg.add("Abóbora Menina");
-        verd_leg.add("Abóbora Moranga");
-        verd_leg.add("Abobrinha");
-        verd_leg.add("Abricó");
-		verd_leg.add("Açafrão");
-		verd_leg.add("Acelga");
-		verd_leg.add("Agrião");
-		verd_leg.add("Aipim ou Mandioca");
-		verd_leg.add("Aipo");
-/*
-		 
-		 Alcachofra, coração
-		 Alcachofra, inteira
-		 Alcachofra-de-Jerusalém
-		 Alcaparra
-		 Alface
-		 Alface Francesa
-		 Alface Romana
-		 Alfafa
-		 Alfafa de sementes espinhosas
-		 Alfavaca em pó
-		 Algaroba, farinha de
-		 Algaroba, vagem
-		 Algaroba, vagem e semente
-		 Algas Marinhas
-		 Azedinha
-		 Azedinha da Horta
-		 Azedinha, crespa
-		 Azeitona, madura, conserva
-		 Azeitona, nacional, preta
-		 Azeitona, preta, parte comestivel
-		 Azeitona, preta, todo fruto
-		 Azeitona, verde, em conserva
-		 Azeitona, verde, parte comestivel
-		 Azeitona, verde, todo fruto
-		 Batata Aipo Amarela, cabeça
-		 Batata Aipo Amarela, raízes
-		 Batata Doce, amarela, assada
-		 Batata Doce, amarela, crua
-		 Batata Doce, amarela, frita
-		 Batata Doce, branca, cozida
-		 Batata Doce, branca, crua
-		 Batata Doce, desidratada
-		 Batata Doce, folhas de
-		 Batata Doce, roxa, crua
-		 Batata Inglesa, amido
-		 Batata Inglesa, cozida
-		 Batata Inglesa, crua
-		 Batata Inglesa, desidratada
-		 Batata Inglesa, fécula
-		 Batata Inglesa, frita
-		 Batata Japonesa
-		 Beijupirá
-		 Beldroega
-		 Benincasa (abóbora branca)
-		 Berinjela em conserva
-		 Berinjela, cozida, picada
-		 Berinjela, crua
-		 Bertalha
-		 Besugo
-		 Beterraba, cozida
-		 Beterraba, crua
-		 Beterraba, em conserva
-		 Beterraba, folhas
-		 Beterraba, purê
-		 Bicuda
-		 Biquara
-		 Brócolis
-		 Brócolis, flores cozidas
-		 Brócolis, flores cruas
-		 Brócolis, folhas
-		 Broto de Abóbora
-		 Broto de Bambu
-		 Brotos de Cebola
-		 Brotos de Chuchú
-		 Brotos de Feijão, crus
-		 Café, em pó
-		 Café, solúvel
-		 Caieté, amêndoa
-		 Camafeu
-		 Cambucá
-		 Canjica, de milho
-		 Cará
-		 Cara Branco
-		 Cará Caratinga
-		 Cará Caratinga Brava
-		 Cará de Angola
-		 Cará Guiné
-		 Cará Mandioca
-		 Cará Mimoso
-		 Cará Moela
-		 Cará ou Inhame cozido
-		 Cará Pé de Anta
-		 Cará Roxo
-		 Cará Sapateiro
-		 Carne Vegetal (de soja)
-		 Cebola
-		 Cebola, cozida
-		 Cebola, crua
-		 Cebola, desidratada
-		 Cebolinha
-		 Cebolinha Branca, bulbu, cru
-		 Cebolinha Branca, bulbu, em conserva de vinagre
-		 Cebolinha, bulbo e folhas
-		 Cebolinha, folhas
-		 Cebolinha, talos
-		 Cenoura Amarela, cozida
-		 Cenoura Amarela, crua
-		 Cenoura Amarela, desidratada
-		 Cenoura, cozida, inteira
-		 Cenoura, cozida, picada
-		 Cenoura, crua, inteira
-		 Cenoura, crua, ralada
-		 Cenoura, em conserva
-		 Centeio em Grão
-		 Cevada, em grão
-		 Cevada, perlada
-		 Cevada, torrada
-		 Chicória
-		 Chuchú
-		 Chuchu, branco
-		 Chuchú, maduro
-		 Chuchú, muito verde
-		 Chuchú, verde
-		 Cobió-de-Pará
-		 Coentro
-		 Cogumelo, bolletus edulis
-		 Cogumelo, bolletus sp.
-		 Cogumelo, em conserva
-		 Cogumelo, fresco (média)
-		 Cominho
-		 Cominho, em pó
-		 Condessa
-		 Consomé
-		 Copas
-		 Couve Chinesa
-		 Couve de Bruxelas
-		 Couve de Bruxelas, brotos, cozidos
-		 Couve de Bruxelas, brotos, crus
-		 Couve Flor
-		 Couve Flor, cozida, só a inflorescência
-		 Couve Flor, crua, só a inflorescência
-		 Couve Gigante
-		 Couve Manteiga
-		 Couve Nabo, folhas
-		 Couve Nabo, tubérculo
-		 Couve Rapa
-		 Couve Tronchuda
-		 Cruz de Malta
-		 Cumandatiá, sementes secas
-		 Cumandatiá, sementes verdes
-		 Cumandatiá, vagem verde
-		 Curry
-		 Daiquiri, enlatada
-		 Daiquiri, preparado de receita
-		 Dendê, amêndoa
-		 Dendê, polpa
-		 Dente de Leão
-		 Eledon, em pó
-		 Eledon, reconstituído
-		 Ervilha
-		 Ervilhaca
-		 Escorcioneira
-		 Espiga de Milho, cozida
-		 Espinafre
-		 Fava, grão seco
-		 Fava, grão verde
-		 Feijão
-		 Gengibre, em pó
-		 Gengibre, rizoma
-		 Gergelim, sementes
-		 Grão de Bico verde, dessecado, cru
-		 Grão de Bico verde, não dessecado
-		 Grão de Bico, em conserva
-		 Grão-de-Bico, cozido
-		 Inhame Branco, cru
-		 Inhame, raiz sem casca
-		 Inhame, talos
-		 Jiló
-		 Legumes (média)
-		 Lentilha d' Água
-		 Lentilha, cozida
-		 Lentilha, seca, cozida
-		 Lentilha, seca, crua
-		 Lírio Chinês, bulho fresco
-		 Lírio Chinês, bulho seco
-		 Mandioca, cozida
-		 Mandioca, frita
-		 Maxixe
-		 Milhete, grão inteiro
-		 Milho Doce, cozido
-		 Milho Doce, cru
-		 Milho Doce, envasado
-		 Milho Doce, envasado, só o milho
-		 Milho Duro
-		 Milho Mole
-		 Milho Seco, amarelo
-		 Milho Verde, cru
-		 Milho Verde, em conserva, enlatado
-		 Milho, amarelo, cru
-		 Milho, branco, cru
-		 Milho, cozido após congelado
-		 Mostarda Crespa, folha cozida
-		 Mostarda Crespa, folha crua
-		 Nabiça, folhas
-		 Nabo, bulbo, cozido
-		 Nabo, bulbo, cru
-		 Nabo, bulbo, desidratado
-		 Nabo, folhas de
-		 Palmito, cru
-		 Palmito, em conserva
-		 Pastinaga, raiz
-		 Pepino do Mato
-		 Pepino, com casca, picles
-		 Pepino, cru, com casca
-		 Pepino, cru, sem casca
-		 Pepino, em salmoura
-		 Picles
-		 Pimentão Doce, cru
-		 Pimentão Doce, envasado
-		 Pimentão, maduro, cru
-		 Pimentão, sementes
-		 Pimentão, verde, cozido
-		 Pimentão, verde, cru
-		 Pimentão, verde, dessecado
-		 Pistacho, amêndoa
-		 Purê de Batata
-		 Purê de Cenoura
-		 Purê de Lentilha, em conserva
-		 Pûre de Tomate, enlatado
-		 Quiabo, cozido
-		 Quiabo, cru
-		 Quínoa, grão
-		 Rabada, crua
-		 Rabanete
-		 Rábano, bulbo
-		 Rábano, folhas
-		 Repolho Chinês
-		 Repolho, cozido
-		 Repolho, cru
-		 Repolho, desidratado
-		 Rinchão, folhas
-		 Risoto à Grega Cozinha Fácil TIO JOÃO
-		 Risoto à Parmegiana Cozinha & Sabor TIO JOÃO
-		 Risoto com Brócolis Cozinha Fácil TIO JOÃO
-		 Risoto com Champignon e Funghi MAGGI
-		 Risoto com Curry Cozinha Fácil TIO JOÃO
-		 Risoto com Funghi Cozinha Fácil TIO JOÃO
-		 Risoto Milanês Cozinha e Sabor TIO JOÃO
-		 Ruibarbo, talos
-		 Salsa
-		 Samambaia das Taperas, pecíolo
-		 Sapota
-		 Sapota, branca
-		 Sapoti
-		 Sapucaia
-		 Sapucaia, castanha
-		 Semente de Abóbora
-		 Sementes de Girassol
-		 Sementes de Glicéria
-		 Sementes de Sumauma
-		 Sêmola de Milho
-		 Sêmola de Trigo, crua
-		 Sêmola de Trigo, fervida
-		 Semolina de Trigo
-		 Soja, cozida
-		 Soja, crua
-		 Tomate, cozido
-		 Tomate, em flocos
-		 Tomate, envasado
-		 Tomate, francês
-		 Tomate, imaturo
-		 Tomate, inteiro, em conserva
-		 Tomate, maduro
-		 Tomate, morango
-		 Toranja
-		 Trigo Duro, flocos
-		 Trigo Duro, grão inteiro
-		 Trigo Sarraceno
-		 Trigo, cozido
-		 Vagem de Ervilha, verde
-		 Vagem Metro ou Corda
-		 Vagem, comum, crua
-		 Vagem, comum, em conserva
-		 Vagem, cozida, picada
-		 Vegetais, em conserva, média
-		 Vegetais, misturados, congelados, cozidos
-		 Aveia Nestle Integral
-		 Batata doce roxa cozida
-		  QUAKER
-		 
-		 Bouquet Floretes de Legumes DAUCY
-		 Batata Noisettes MCCAIN
-		 Batata Palito MCCAIN
-		 Batata Palito PERDIGÃO
-		 Batata Palito Pré-Frita C.A.C
-		 Batata Palito VERT´S
-		 Batata Parisiense BONDUELLE
-		 Batata Rissolée MCCAIN
-		 Bouquet de Legumes com Brocolis DAUCY
-		 Bouquet de Legumes com Ervilhas DAUCY
-		 Bouquet Legumes com Tomate DAUCY
-		 Brócolis BONDUELLE
-		 Brócolis PRATIGEL
-		 Cenoura Baby BONDUELLE
-		 Champignon BONDUELLE
-		 Couve de Bruxelas BONDUELLE
-		 Couve Flor BONDUELLE
-		 Couve Flor PRATIGEL
-		 Couve Manteiga PRATIGEL
-		 Ervilha BONDUELLE
-		 Ervilha PRATIGEL
-		 Espinafre PRATIGEL
-		 Favas BONDUELLE
-		 Feijão Congelado BROTO LEGAL
-		 Fundo de Alcachofra BONDUELLE
-		 Legumes à Moda Bretã BONDUELLE
-		 Legumes para Minestrone BONDUELLE
-		 Mandioca Palito PRATIGEL
-		 Mandioca Tolete PRATIGEL
-		 Milho Verde BONDUELLE
-		 Salada Primavera PRATIGEL
-		 Salada Russa BONDUELLE
-		 Salada Sombrero BONDUELLE
-		 Salada Verão PRATIGEL
-		 Seleta de Legumes PRATIGEL
-		 Soja Congelada BROTO LEGAL
-		 Vagem Fina 
-*/
+//Lista de Enlatados e Conservas
+		List<String> enla_conse = new ArrayList<String>();
+		enla_conse.add("Alcaparras");
+		enla_conse.add("Aspargos Brancos");
+        enla_conse.add("Atum");
+		enla_conse.add("Azeitona Verde/Preta Fatiada");
+		enla_conse.add("Azeitona Verde/Preta Recheada");
+		enla_conse.add("Azeitona Verde/Preta sem Caroco");
+		enla_conse.add("Bacalhau");
+		enla_conse.add("Carne em Lata");
+		enla_conse.add("Ervilha");
+		enla_conse.add("Filé de Anchova em Óleo Comestível");
+		enla_conse.add("Grão de Bico em conserva");
+		enla_conse.add("Milho Verde");
+		enla_conse.add("Ovos de Codorna em Conserva");
+		enla_conse.add("Pepino Cornichon");
+		enla_conse.add("Palmito Inteiro de Açaí");
+		enla_conse.add("Pepino em Condimento");
+		enla_conse.add("Picles");
+		enla_conse.add("Salmão");
+		enla_conse.add("Seleta de Legumes");
+		enla_conse.add("Tomate Seco");
+
+
+//Lista de Frutas
         List<String> frutas = new ArrayList<String>();
         frutas.add("Abacaxi");
+		frutas.add("Abacate");
         frutas.add("Açaí");
         frutas.add("Acerola");
         frutas.add("Ameixa");
+		frutas.add("Amêndoa");
 		frutas.add("Amora");
 		frutas.add("Avelã");
 		frutas.add("Banana");
 		frutas.add("Buriti");
 		frutas.add("Butiá");
+		frutas.add("Cereja");
 		frutas.add("Cajá");
 		frutas.add("Cajú");
 		frutas.add("Camboatá");
@@ -529,145 +237,117 @@ public class ProdutosActivity extends AppCompatActivity {
 		frutas.add("Caqui");
 		frutas.add("Carambola");
 		frutas.add("Carurú");
-		/*
-		 
-		 Cereja
-		
-		 Côco Babaçu, amêndoa
-		 Côco Catolé
-		 Côco de Catarro, polpa
-		 Côco de Macaúba
-		 Côco de Tucum
-		 Côco Ralado, fresco
-		 Côco Ralado, seco
-		 Côco, carne
-		 Composta de Maçã
-		 Cuieira, fruto, polpa
-		 Cumari, amêndoa
-		 Cupuaçu
-		 Damasco
-		 Damasco, dessecado
-		 Damasco, em conserva
-		 Damasco, fresco
-		 Figo
-		 Figo da Índia, amarelo
-		 Figo da Índia, vermelho
-		 Figo, cozido
-		 Figo, dessecado
-		 Figo, em calda
-		 Figo, maduro
-		 Figo, verde
-		 Framboesa
-		 Framboesa, em calda
-		 Framboesa, em conserva, em água, enlatada
-		 Fruta de Conde, Ata ou Pinha
-		 Fruta Pão, cozida
-		 Fruta Pão, crua
-		 Frutas Cristalizadas, caseiro
-		 Frutas Cristalizadas, industrializadas
-		 Frutas em Coquetel
-		 Goiaba
-		 Gravatá
-		 Graviola
-		 Groselha da Índia
-		 Groselha, branca
-		 Groselha, preta
-		 Grumixama
-		 Guabiroba
-		 Jabuticaba
-		 Jaca
-		 Jaca, caroço
-		 Jaca, polpa
-		 Jamelão
-		 Jatobá
-		 Jenipapo
-		 Jenipapo, desidratado
-		 Kiwi
-		 Laranja
-		 Laranja China
-		 Laranja da Bahia
-		 Laranja da Terra
-		 Laranja Pêra
-		 Laranja Seleta
-		 Laranja Seleta Itaboraí
-		 Laranja, compota de
-		 Laranjinha Japonesa
-		 Lima
-		 Lima de Pérsia
-		 Limão
-		 Limão Caiena
-		 Limão de Vez
-		 Maçã
-		 Maçã, branca, crua
-		 Maçã, dessecada
-		 Maçã, em conserva, enlatada
-		 Maçã, vermelha, crua
-		 Mamão
-		 Mamão, maduro
-		 Mamão, verde
-		 Manga
-		 Manga Espada
-		 Manga Rosa
-		 Manga, em calda
-		 Maracujá Melão
-		 Maracujá Vermelho
-		 Maracujá, comum, polpa
-		 Marmelo
-		 Melancia
-		 Melão
-		 Morango
-		 Morango, envasado em água
-		 Morango, envasado em xarope
-		 Néspera
-		 Passa de Maçã
-		 Passas
-		 Passas, com sementes
-		 Pêra
-		 Pêra, dessecada
-		 Pêra, enlatada, com açucar
-		 Pêra, enlatada, em água
-		 Pescada (peixe)
-		 Pêssego
-		 Pêssego, amarelo
-		 Pêssego, branco
-		 Pêssego, em calda, enlatado
-		 Pêssego, em conserva, enlatado
-		 Pinhão, cozido
-		 Pinhão, cru
-		 Pitanga
-		 Polpa de Figo da Barbária
-		 Polpa de Guajiru
-		 Polpa de Ingá
-		 Purê de Maça, açucarado
-		 Sapota, branca
-		 Romã
-		 Salada de Frutas, caseira
-		 Sapota
-		 Sapoti
-		 Sapucaia
-		 Sapucaia, castanha
-		 Siriguela ou Ciriguela
-		 Suco de Cajú
-		 Suco de Limão Verde
-		 Suco de Maçã
-		 Tâmara, ao natural
-		 Tâmara, dessecada
-		 Tamarindo, polpa
-		 Tangerina
-		 Taperebá
-		 Toranja
-		 Urucum, dessecado
-		 Urucum, polpa
-		 Uva, branca, nacional, polpa
-		 Uva, tipo americano
-		 Uva, tipo europeu
-		 Uvaia ou Uvalha
-		 Vitamina de Frutas, com leite
-		 Vitamina de Frutas, sem leite
-		 Banana
-		 Abacate
-		*/
+		frutas.add("Côco Babaçu");
+		frutas.add("Cuieira");
+		frutas.add("Cumari");
+		frutas.add("Cupuaçu");
+		frutas.add("Damasco");
+		frutas.add("Figo");
+		frutas.add("Framboesa");
+		frutas.add("Fruta de Conde");
+		frutas.add("Goiaba");
+		frutas.add("Gravatá");
+		frutas.add("Graviola");
+		frutas.add("Groselha");
+		frutas.add("Guabiroba");
+		frutas.add("Jabuticaba");
+		frutas.add("Jaca");
+		frutas.add("Jamelão");
+		frutas.add("Jatobá");
+		frutas.add("Jenipapo");
+		frutas.add("Kiwi");
+		frutas.add("Laranja");
+		frutas.add("Lima");
+		frutas.add("Limão");
+		frutas.add("Maçã");
+		frutas.add("Mamão");
+		frutas.add("Manga");
+		frutas.add("Maracujá");
+		frutas.add("Melancia");
+		frutas.add("Melão");
+		frutas.add("Morango");
+		frutas.add("Nozes de Macadâmia");
+		frutas.add("Passas");
+		frutas.add("Pêra");
+		frutas.add("Pêssego");
+		frutas.add("Pinhão");
+		frutas.add("Pistache");
+		frutas.add("Pitanga");
+		frutas.add("Sapota");
+		frutas.add("Sapoti");
+		frutas.add("Sapucaia");
+		frutas.add("Siriguela");
+		frutas.add("Tâmara");
+		frutas.add("Tangerina");
+		frutas.add("Toranja");
+		frutas.add("Uva");
 
+
+//Lista de Graos
+        List<String> graos_cereais = new ArrayList<String>();
+        graos_cereais.add("Alpiste");
+		graos_cereais.add("Amaranto");
+        graos_cereais.add("Amendoim");
+        graos_cereais.add("Arroz");
+        graos_cereais.add("Aspargo");
+        graos_cereais.add("Aveia");
+		graos_cereais.add("Centeio");
+		graos_cereais.add("Cevada");
+		graos_cereais.add("Ervilha");
+		graos_cereais.add("Fava");
+		graos_cereais.add("Feijão");
+		graos_cereais.add("Grão de Bico");
+		graos_cereais.add("Grão de Milho(Polenta)");
+		graos_cereais.add("Lentilha");
+		graos_cereais.add("Milho");
+		graos_cereais.add("Painço");
+		graos_cereais.add("Quinoa");
+		graos_cereais.add("Soja");
+		graos_cereais.add("Trigo");
+		graos_cereais.add("Painço");
+
+
+//Lista de Higiene Pessoal
+		List<String> hig_pes = new ArrayList<String>();
+        hig_pes.add("Absorvente");
+		hig_pes.add("Condicionador");
+		hig_pes.add("Creme Dental");
+		hig_pes.add("Creme/Espuma de Barbear");
+		hig_pes.add("Creme para Pentear");
+		hig_pes.add("Desodorante");
+		hig_pes.add("Enxaguante Bucal");
+		hig_pes.add("Fio Dental");
+		hig_pes.add("Gel Antisséptico");
+		hig_pes.add("Loção Hidratante");
+		hig_pes.add("Loção Pós Barba");
+		hig_pes.add("Hidratante Corporal");
+		hig_pes.add("Repelente");
+		hig_pes.add("Sabonete Esfoliante");
+		hig_pes.add("Sabonete Hidratante");
+		hig_pes.add("Sabonete Íntimo");
+		hig_pes.add("Sabonete Liquido");
+		hig_pes.add("Shampoo");
+		hig_pes.add("Talco");
+
+
+//Lista de Produtos de Limpeza
+		List<String> limpeza = new ArrayList<String>();
+        limpeza.add("Água Sanitária");
+		limpeza.add("Álcool");
+		limpeza.add("Cloro");
+		limpeza.add("Desengordurante");
+		limpeza.add("Desinfetante");
+		limpeza.add("Detergente");
+		limpeza.add("Esponjas");
+		limpeza.add("Luvas");
+		limpeza.add("Papéis Higiênicos");
+		limpeza.add("Papéis Toalhas");
+		limpeza.add("Sabão em barra");
+		limpeza.add("Sabão em pó");
+		limpeza.add("Saco para Lixo");
+
+
+//Lista de sucos
         List<String> sucos = new ArrayList<String>();
         sucos.add("Suco de Abacaxi");
         sucos.add("Suco de Acerola");
@@ -685,116 +365,72 @@ public class ProdutosActivity extends AppCompatActivity {
 		sucos.add("Suco de Tangerina");
 		sucos.add("Suco de Tomate");
 		sucos.add("Suco de Toranja");
-		/*
-		 */
-		List<String> frios = new ArrayList<String>();
-		frios.add("Extrato de Tomate");
-        frios.add("Molho de Tomate");
-        frios.add("Molho à Bolonhesa");
-        frios.add("Molho Barbecue");
-        frios.add("Molho Bordelaise");
-		/*
-		 Apresuntado 
-		 Blanquet de Peru
-		 Copa 
-		 Lingüiça 
-		 Lombo Condimentado
-		 Mini Chester Lanche PERDIGÃO
-		 Mortadela 
-		 Pasta de Enchova (peixe)
-		 Peito de Peru
-		 Presunto 
-		 Ricota
-		 Rosbife
-		 Roulé de Peru
-		 Salame 
-		 Salsicha 
-		 Salsichão
-		*/
-		
-		List<String> molhos = new ArrayList<String>();
-		molhos.add("Extrato de Tomate");
-        molhos.add("Molho de Tomate");
-        molhos.add("Molho à Bolonhesa");
-        molhos.add("Molho Barbecue");
-        molhos.add("Molho Bordelaise");
-		/*
 
-		 Molho de Atum
-		 Molho de Gergelim
-		 Molho de Pimenta
-		 Molho de Pimentão Vermelho
-		 Molho de Soja
-		 Molho de Tomate
-		 Molho de Tomate à Bolonhesa POMAROLA
-		 Molho de Tomate Básico TARANTELLA
-		 Molho de Tomate Basilico BARILLA
-		 Molho de Tomate Clássico KNORR
-		 Molho de Tomate com Ervas Finas JUREMA
-		 Molho de Tomate com Manjericão KNORR
-		 Molho de Tomate com Salsa e Cebolinha POMAROLA
-		 Molho de Tomate Costela POMAROLA
-		 Molho de Tomate Napolitana BARILLA
-		 Molho de Tomate para Pizza POMAROLA
-		 Molho de Tomate Peneirado com Manjericão POMAROLA
-		 Molho de Tomate Peneirado Pomarola CICA
-		 Molho de Tomate Peneirado POMAROLA Costela
-		 Molho de Tomate Picante POMAROLA
-		 Molho de Tomate Refogado POMAROLA
-		 Molho de Tomate Refogado PREDILECTA
-		 Molho de Tomate Refogado Salsaretti ETTI
-		 Molho de Tomate Tarantella ARISCO
-		 Molho de Tomate Temperado com Caldo de Galinha POMAROLA
-		 Molho de Tomate Tradicional JUREMA
-		 Molho de Tomate, em lata
-		 Molho Inglês
-		 Molho Mostarda do McDonald's
-		 Molho Teriyaki
-		 Mollho de Tucupi
-		 Polpa de Tomate Pomodoro CICA
-		 Polpa de Tomate TOMATINO
-		 Polpa de Tomate Tomato ARISCO
-		 Shoyo (molho)
-		 Tomate Pelado Italiano RAIOLA
-		 */
-		List<String> caldos = new ArrayList<String>();
-		caldos.add("Caldo de Carne");
-        caldos.add("Caldo de Bacon");
-        caldos.add("Caldo de Cebola e Alho");
-        caldos.add("Caldo de Costela");
-        caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Legumes e Verduras");
-		caldos.add("Caldo de Picanha");
-		caldos.add("Caldo para Arroz Branco");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		caldos.add("Caldo de Galinha");
-		/*
-		 
-		 */
-		List<String> condimentos = new ArrayList<String>();
-		condimentos.add("Erva Doce");
-        condimentos.add("Gengibre");
-        condimentos.add("Hortelã");
-        condimentos.add("Orégano");
-        condimentos.add("Pimenta");
-		condimentos.add("Sal");
-		condimentos.add("Salsa");
-		condimentos.add("Vinagre");
-		condimentos.add("Vinagreira ou Caruru Azedo");
-		 
+
+//Lista de Verduras e Legumes
+		List<String> verd_leg = new ArrayList<String>();
+        verd_leg.add("Abóbora");
+        verd_leg.add("Abobrinha");
+		verd_leg.add("Açafrão");
+		verd_leg.add("Acelga");
+		verd_leg.add("Agrião");
+		verd_leg.add("Alcachofra");
+		verd_leg.add("Alcaparra");
+		verd_leg.add("Alface");
+		verd_leg.add("Alfafa");
+		verd_leg.add("Azeitona");
+		verd_leg.add("Batata");
+		verd_leg.add("Berinjela");
+		verd_leg.add("Beterraba");
+		verd_leg.add("Brócolis");
+		verd_leg.add("Café em pó");
+		verd_leg.add("Café solúvel");
+		verd_leg.add("Cebola");
+		verd_leg.add("Cebolinha");
+		verd_leg.add("Cenoura");
+		verd_leg.add("Champignon");
+		verd_leg.add("Chuchú");
+		verd_leg.add("Coentro");
+		verd_leg.add("Cogumelo");
+		verd_leg.add("Cominho");
+		verd_leg.add("Condessa");
+		verd_leg.add("Couve de Bruxelas");
+		verd_leg.add("Couve Flor");
+		verd_leg.add("Couve Nabo");
+		verd_leg.add("Espinafre");
+		verd_leg.add("Gengibre");
+		verd_leg.add("Gergelim");
+		verd_leg.add("Grão de Bico");
+		verd_leg.add("Inhame");
+		verd_leg.add("Jiló");
+		verd_leg.add("Lentilha");
+		verd_leg.add("Lírio");
+		verd_leg.add("Mandioca, Aipim");
+		verd_leg.add("Maxixe");
+		verd_leg.add("Milho");
+		verd_leg.add("Nabo");
+		verd_leg.add("Palmito");
+		verd_leg.add("Pepino");
+		verd_leg.add("Picles");
+		verd_leg.add("Pimentão");
+		verd_leg.add("Quiabo");
+		verd_leg.add("Rabanete");
+		verd_leg.add("Repolho");
+		verd_leg.add("Salsa");áãâéêúíõôóçÁÓÚÉÍ
+		verd_leg.add("Soja");
+		verd_leg.add("Trigo");
+		verd_leg.add("Vagem");
 		
-        expandableList.put(expandableListTitle.get(0), graos);
-		expandableList.put(expandableListTitle.get(1), verd_leg);
-        expandableList.put(expandableListTitle.get(2), frutas);
-        expandableList.put(expandableListTitle.get(3), sucos);
-		expandableList.put(expandableListTitle.get(4), molhos);
-		expandableList.put(expandableListTitle.get(5), caldos);
-		expandableList.put(expandableListTitle.get(6), condimentos);
+		expandableList.put(expandableListTitle.get(0), bebidas);
+		expandableList.put(expandableListTitle.get(1), cald_molh_cond);
+        expandableList.put(expandableListTitle.get(2), carnes_frios);
+		expandableList.put(expandableListTitle.get(3), enla_conse);
+		expandableList.put(expandableListTitle.get(4), frutas);
+		expandableList.put(expandableListTitle.get(5), graos_cereais);
+		expandableList.put(expandableListTitle.get(6), hig_pes);
+		expandableList.put(expandableListTitle.get(7), limpeza);
+        expandableList.put(expandableListTitle.get(8), sucos);
+		expandableList.put(expandableListTitle.get(9), verd_leg);
 	}
 	
 	public void addItemLista(String p, String idLista) {
