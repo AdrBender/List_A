@@ -2,7 +2,13 @@
 <resources>
 
     <string name="app_name">List_A</string>
+	<string name="activity_hist_name">Histórico</string>
 	
 	<string name="empty_list">Opss. Nenhhuma lista, crie uma.</string>
 	<string name ="empty_list_items">Nenhum item, adicione alguns.</string>
+	
+	<string name="menu_save_list">Finalizar lista</string>
+	<string name="menu_historico_list">Histórico</string>
+	
+	<string name="menu_deletar_historico">Apagar Histórico</string>
 </resources>

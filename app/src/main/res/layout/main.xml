@@ -7,19 +7,39 @@
 	android:layout_height="fill_parent"
 	tools:context=".MainActivity">
 
-	<TextView
-		android:id="@+id/empty_list"
+	<FrameLayout
+		android:id="@+id/frame_layout"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:id="@+id/empty_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/empty_list"
+			android:textColor="#000000"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="250dp"/>
+
+		<ListView
+			android:id="@+id/list_view"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:divider="@color/colorAccent"
+			android:dividerHeight="1dp"
+			android:layout_marginLeft="@dimen/listview_margin_left"
+			android:layout_marginRight="@dimen/listview_margin_right">
+		</ListView>
+
+	</FrameLayout>
+
+	<include
+		android:id="@+id/ad_view_layout"
+		layout="@layout/banner"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_centerInParent="true"/>
-
-	<ListView 
-		android:id="@+id/list_view" 
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content"
-		android:divider="@color/colorAccent"
-		android:dividerHeight="1dp">
-	</ListView> 
+		android:layout_centerHorizontal="true"
+		android:layout_alignParentBottom="true"/>
 
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/mainfab"
@@ -29,7 +49,7 @@
 		android:layout_alignParentRight="true"
 		android:layout_alignParentBottom="true"
 		android:layout_gravity="bottom"
-		android:paddingRight="10dp"/>
+		android:paddingRight="@dimen/fab_margin"/>
 
 </RelativeLayout>
 

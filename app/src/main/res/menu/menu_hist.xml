@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.adriano.lista.HistoricoActivity">
+
+	<item
+		android:id="@+id/delete_hist"
+		android:title="@string/menu_deletar_historico"
+		android:icon="@drawable/baseline_delete_outline_black_23dp"
+		app:showAsAction="always"/>
+</menu>

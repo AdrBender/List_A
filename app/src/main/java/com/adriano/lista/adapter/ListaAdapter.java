@@ -1,5 +1,6 @@
 package com.adriano.lista.adapter;
 
+import android.annotation.*;
 import android.app.ActionBar.LayoutParams;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.adriano.lista.model.Lista;
@@ -26,6 +29,10 @@ public class ListaAdapter extends BaseAdapter {
 	private final Context context;
 	private List<Lista> values;
 	LayoutInflater inflater;
+	
+	@SuppressLint("SimpleDateFormat")
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    
 
 	public ListaAdapter(Context context, List<Lista> values) {
 		this.context = context;
@@ -52,7 +59,13 @@ public class ListaAdapter extends BaseAdapter {
 		
 		TextView txt_list = convertView.findViewById(R.id.txt_list_row);
 		txt_list.setText(values.get(position).getLista());
-
+		
+		//TextView txt_total_itens = convertView.findViewById(R.id.txt_total_itens_row);
+		//txt_total_itens.setText(values.get(position).isSaved() ? "1" : "0");
+		
+		TextView txt_data = convertView.findViewById(R.id.txt_data_row);
+		txt_data.setText(dateFormat.format(values.get(position).getData()));
+		
 		return convertView;
 	}
 }

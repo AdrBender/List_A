@@ -6,21 +6,24 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	tools:context=".ListaItensActivity">
-	
+
 	<TextView
 		android:id="@+id/empty_item_list"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerInParent="true"/>
 
-	<ListView 
-		android:id="@+id/itens_list_view" 
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:divider="@color/colorAccent" 
-		android:dividerHeight="1dp">
-	</ListView> 
-	
+	<ListView
+		android:id="@+id/itens_list_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:divider="@color/colorAccent"
+		android:dividerHeight="1dp"
+		android:layout_alignParentTop="true"
+		android:layout_marginLeft="@dimen/listview_margin_left"
+		android:layout_marginRight="@dimen/listview_margin_right">
+	</ListView>
+
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/item_fab"
 		android:layout_width="wrap_content"
@@ -32,3 +35,4 @@
 		android:paddingRight="10dp"/>
 
 </RelativeLayout>
+

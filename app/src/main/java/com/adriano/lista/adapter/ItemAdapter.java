@@ -1,13 +1,19 @@
 package com.adriano.lista.adapter;
 
-import android.content.*;
-import android.util.*;
-import android.view.*;
-import android.widget.*;
-import com.adriano.lista.*;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import java.util.List;
+import android.util.Log;
+
+import com.adriano.lista.R;
+import com.adriano.lista.database.DatabaseHelper;
+import com.adriano.lista.model.Item;
 import com.adriano.lista.database.*;
-import com.adriano.lista.model.*;
-import java.util.*;
 
 
 public class ItemAdapter extends BaseAdapter {
@@ -39,7 +45,8 @@ public class ItemAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 		final Item item = listItems.get(position);
-		final DatabaseHelper database = new DatabaseHelper(context);
+		//final DatabaseHelper database = new DatabaseHelper(context);
+		final DbController dbc = new DbController(context);
         
        	final ViewHolder holder;
 		if(convertView == null) {
@@ -62,10 +69,10 @@ public class ItemAdapter extends BaseAdapter {
 				if (((CheckBox) v).isChecked()) {
 				Log.i(TAG, "checkbox Click: " +position);
 					
-					database.updateStatus(item.getIdItem(), 1);
+					dbc.updateStatus(item.getIdItem(), 1);
 					Log.i(TAG, "chkbox id checked: " +item.getIdItem());
 				} else {
-					database.updateStatus(item.getIdItem(), 0);
+					dbc.updateStatus(item.getIdItem(), 0);
 					Log.i(TAG, "chkbox unchecked: " +listItems.get(position).getItem());
 				}
 			}

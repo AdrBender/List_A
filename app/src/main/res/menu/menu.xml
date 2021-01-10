@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.adriano.lista.ListaItensActivity">
+
+    <item
+		android:id="@+id/menu_save"
+		android:icon="@drawable/sharp_grading_black_18dp"
+		android:title="@string/menu_save_list"
+		app:showAsAction="always" />
+</menu>

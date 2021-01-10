@@ -16,59 +16,69 @@ import com.adriano.lista.adapter.ExpandableListViewAdapter;
 import com.adriano.lista.model.Lista;
 import com.adriano.lista.database.DatabaseHelper;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.adriano.lista.database.*;
+
+/**
+ * @author AdrBender
+ */
 public class ProdutosActivity extends AppCompatActivity {
-	
+
 	ExpandableListView expandableListView;
     ExpandableListViewAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableList;
-	
+
 	Lista l;
 	String idLista;
 	Bundle b;
-	
+
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
-		
 		getSupportActionBar().setTitle("Listas de Produtos");
-		
+
+		AdView mAdView = (AdView)findViewById(R.id.ad_view);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
+
 		b = getIntent().getExtras();
-		if( b != null ) {
+		if (b != null) {
 			idLista = b.getString("id");
-			Toast.makeText(this, "Lista id: "+idLista, Toast.LENGTH_LONG).show(); 
-		}else{
+			Toast.makeText(this, "Lista id: " + idLista, Toast.LENGTH_LONG).show(); 
+		} else {
 			Toast.makeText(this, "id da lista está null", Toast.LENGTH_LONG).show(); 
 		}
-		
+
 		expandableListView = (ExpandableListView) findViewById(R.id.exp_list_view);
 		listData();
-		
+
 		expandableListAdapter = new ExpandableListViewAdapter(this, expandableListTitle, expandableList);
 		expandableListView.setAdapter(expandableListAdapter);
-	/*
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-				@Override
-				public void onGroupExpand(int groupPosition) {
-					Toast.makeText(getApplicationContext(),
-								   expandableListTitle.get(groupPosition) + " List Expanded.",
-								   Toast.LENGTH_SHORT).show();
-				}
-			});
+		/*
+		 expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+		 @Override
+		 public void onGroupExpand(int groupPosition) {
+		 Toast.makeText(getApplicationContext(),
+		 expandableListTitle.get(groupPosition) + " List Expanded.",
+		 Toast.LENGTH_SHORT).show();
+		 }
+		 });
 
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-				@Override
-				public void onGroupCollapse(int groupPosition) {
-					Toast.makeText(getApplicationContext(),
-								   expandableListTitle.get(groupPosition) + " List Collapsed.",
-								   Toast.LENGTH_SHORT).show();
+		 expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+		 @Override
+		 public void onGroupCollapse(int groupPosition) {
+		 Toast.makeText(getApplicationContext(),
+		 expandableListTitle.get(groupPosition) + " List Collapsed.",
+		 Toast.LENGTH_SHORT).show();
 
-				}
-			});*/
+		 }
+		 });*/
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
 				@Override
 				public boolean onChildClick(ExpandableListView parent, View v,
 											int groupPosition, int childPosition, long id) {
@@ -80,17 +90,17 @@ public class ProdutosActivity extends AppCompatActivity {
 							expandableListTitle.get(groupPosition)).get(
 							childPosition), Toast.LENGTH_SHORT
 					).show();
-					
+
 					String p = expandableList.get(
 						expandableListTitle.get(groupPosition)).get(
 						childPosition);
 					addItemLista(p, idLista);
-					
+
 					return false;
 				}
 			});
-		}
-		
+	}
+
 	private void listData() {
         expandableListTitle = new ArrayList<String>();
         expandableList = new HashMap<String, List<String>>();
@@ -99,14 +109,14 @@ public class ProdutosActivity extends AppCompatActivity {
 		expandableListTitle.add("Caldos, Molhos e Condimentos");
 		expandableListTitle.add("Carnes e Frios");
 		expandableListTitle.add("Enlatados e Conservas");
-        expandableListTitle.add("Frutas");
+		expandableListTitle.add("Frutas");
 		expandableListTitle.add("Grãos e Cereais");
-        expandableListTitle.add("Higiene Pessoal");
+		expandableListTitle.add("Higiene Pessoal");
 		expandableListTitle.add("Limpeza");
 		expandableListTitle.add("Sucos");
 		expandableListTitle.add("Verduras e Legumes");
-		
-		
+
+
 //Lista de Bebidas
 		List<String> bebidas = new ArrayList<String>();
 		bebidas.add("Achocolatado");
@@ -125,23 +135,23 @@ public class ProdutosActivity extends AppCompatActivity {
 		bebidas.add("Suco Concentrado");
 		bebidas.add("Vinhos");
 		bebidas.add("Vodca");
-		
-		
+
+
 //Lista de Caldos, Molhos e Condimentos
 		List<String> cald_molh_cond = new ArrayList<String>();
 		cald_molh_cond.add("Caldo para Arroz Branco");
 		cald_molh_cond.add("Caldo de Carne");
-        cald_molh_cond.add("Caldo de Bacon");
-        cald_molh_cond.add("Caldo de Cebola e Alho");
-        cald_molh_cond.add("Caldo de Costela");
+		cald_molh_cond.add("Caldo de Bacon");
+		cald_molh_cond.add("Caldo de Cebola e Alho");
+		cald_molh_cond.add("Caldo de Costela");
 		cald_molh_cond.add("Caldo de Churrasco");
-        cald_molh_cond.add("Caldo de Galinha");
+		cald_molh_cond.add("Caldo de Galinha");
 		cald_molh_cond.add("Caldo de Legumes e Verduras");
 		cald_molh_cond.add("Caldo de Picanha");
-        cald_molh_cond.add("Molho de Atum");
+		cald_molh_cond.add("Molho de Atum");
 		cald_molh_cond.add("Molho Barbecue");
 		cald_molh_cond.add("Molho Bolonhesa");
-        cald_molh_cond.add("Molho Bordelaise");
+		cald_molh_cond.add("Molho Bordelaise");
 		cald_molh_cond.add("Molho Inglês");
 		cald_molh_cond.add("Molho de Atum");
 		cald_molh_cond.add("Molho de Pimenta");
@@ -155,27 +165,28 @@ public class ProdutosActivity extends AppCompatActivity {
 		cald_molh_cond.add("Alho Porró");
 		cald_molh_cond.add("Almeirão");
 		cald_molh_cond.add("Erva Doce");
-        cald_molh_cond.add("Gengibre");
-        cald_molh_cond.add("Hortelã");
+		cald_molh_cond.add("Gengibre");
+		cald_molh_cond.add("Hortelã");
 		cald_molh_cond.add("Óleo de Dendê");
 		cald_molh_cond.add("Óleo de Amêndoa");
-        cald_molh_cond.add("Orégano");
+		cald_molh_cond.add("Orégano");
 		cald_molh_cond.add("Salsa");
 		cald_molh_cond.add("Salsa");
-        cald_molh_cond.add("Pimenta");
+		cald_molh_cond.add("Pimenta");
 		cald_molh_cond.add("Sal");
 		cald_molh_cond.add("Salsa");
 		cald_molh_cond.add("Vinagre");
 		cald_molh_cond.add("Vinagreira ou Caruru Azedo");
-		
-		
+
+
 //Lista de Carnes e Frios
 		List<String> carnes_frios = new ArrayList<String>();
+		carnes_frios.add("Alcatra");
 		carnes_frios.add("Apresuntado");
-        carnes_frios.add("Blanquet de Peru");
-        carnes_frios.add("Chester");
+		carnes_frios.add("Blanquet de Peru");
+		carnes_frios.add("Chester");
 		carnes_frios.add("Copa");
-        carnes_frios.add("Mortadela");
+		carnes_frios.add("Mortadela");
 		carnes_frios.add("Pasta de Enchova");
 		carnes_frios.add("Peito de Frango");
 		carnes_frios.add("Peito de Peru");
@@ -191,12 +202,12 @@ public class ProdutosActivity extends AppCompatActivity {
 		carnes_frios.add("Empanados de Frango");
 		carnes_frios.add("Tender");
 
-		 
+
 //Lista de Enlatados e Conservas
 		List<String> enla_conse = new ArrayList<String>();
 		enla_conse.add("Alcaparras");
 		enla_conse.add("Aspargos Brancos");
-        enla_conse.add("Atum");
+		enla_conse.add("Atum");
 		enla_conse.add("Azeitona Verde/Preta Fatiada");
 		enla_conse.add("Azeitona Verde/Preta Recheada");
 		enla_conse.add("Azeitona Verde/Preta sem Caroco");
@@ -218,11 +229,11 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de Frutas
         List<String> frutas = new ArrayList<String>();
-        frutas.add("Abacaxi");
+		frutas.add("Abacaxi");
 		frutas.add("Abacate");
-        frutas.add("Açaí");
-        frutas.add("Acerola");
-        frutas.add("Ameixa");
+		frutas.add("Açaí");
+		frutas.add("Acerola");
+		frutas.add("Ameixa");
 		frutas.add("Amêndoa");
 		frutas.add("Amora");
 		frutas.add("Avelã");
@@ -285,12 +296,12 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de Graos
         List<String> graos_cereais = new ArrayList<String>();
-        graos_cereais.add("Alpiste");
+		graos_cereais.add("Alpiste");
 		graos_cereais.add("Amaranto");
-        graos_cereais.add("Amendoim");
-        graos_cereais.add("Arroz");
-        graos_cereais.add("Aspargo");
-        graos_cereais.add("Aveia");
+		graos_cereais.add("Amendoim");
+		graos_cereais.add("Arroz");
+		graos_cereais.add("Aspargo");
+		graos_cereais.add("Aveia");
 		graos_cereais.add("Centeio");
 		graos_cereais.add("Cevada");
 		graos_cereais.add("Ervilha");
@@ -309,7 +320,7 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de Higiene Pessoal
 		List<String> hig_pes = new ArrayList<String>();
-        hig_pes.add("Absorvente");
+		hig_pes.add("Absorvente");
 		hig_pes.add("Condicionador");
 		hig_pes.add("Creme Dental");
 		hig_pes.add("Creme/Espuma de Barbear");
@@ -332,7 +343,7 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de Produtos de Limpeza
 		List<String> limpeza = new ArrayList<String>();
-        limpeza.add("Água Sanitária");
+		limpeza.add("Água Sanitária");
 		limpeza.add("Álcool");
 		limpeza.add("Cloro");
 		limpeza.add("Desengordurante");
@@ -349,11 +360,11 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de sucos
         List<String> sucos = new ArrayList<String>();
-        sucos.add("Suco de Abacaxi");
-        sucos.add("Suco de Acerola");
-        sucos.add("Suco de Ameixa");
-        sucos.add("Suco de Cenoura");
-        sucos.add("Suco de Cereja");
+		sucos.add("Suco de Abacaxi");
+		sucos.add("Suco de Acerola");
+		sucos.add("Suco de Ameixa");
+		sucos.add("Suco de Cenoura");
+		sucos.add("Suco de Cereja");
 		sucos.add("Suco de Framboesa");
 		sucos.add("Suco de Frutas");
 		sucos.add("Suco de Groselha");
@@ -369,8 +380,8 @@ public class ProdutosActivity extends AppCompatActivity {
 
 //Lista de Verduras e Legumes
 		List<String> verd_leg = new ArrayList<String>();
-        verd_leg.add("Abóbora");
-        verd_leg.add("Abobrinha");
+		verd_leg.add("Abóbora");
+		verd_leg.add("Abobrinha");
 		verd_leg.add("Açafrão");
 		verd_leg.add("Acelga");
 		verd_leg.add("Agrião");
@@ -416,25 +427,26 @@ public class ProdutosActivity extends AppCompatActivity {
 		verd_leg.add("Quiabo");
 		verd_leg.add("Rabanete");
 		verd_leg.add("Repolho");
-		verd_leg.add("Salsa");áãâéêúíõôóçÁÓÚÉÍ
+		verd_leg.add("Salsa");
 		verd_leg.add("Soja");
 		verd_leg.add("Trigo");
 		verd_leg.add("Vagem");
-		
+
 		expandableList.put(expandableListTitle.get(0), bebidas);
 		expandableList.put(expandableListTitle.get(1), cald_molh_cond);
-        expandableList.put(expandableListTitle.get(2), carnes_frios);
+		expandableList.put(expandableListTitle.get(2), carnes_frios);
 		expandableList.put(expandableListTitle.get(3), enla_conse);
 		expandableList.put(expandableListTitle.get(4), frutas);
 		expandableList.put(expandableListTitle.get(5), graos_cereais);
 		expandableList.put(expandableListTitle.get(6), hig_pes);
 		expandableList.put(expandableListTitle.get(7), limpeza);
-        expandableList.put(expandableListTitle.get(8), sucos);
+		expandableList.put(expandableListTitle.get(8), sucos);
 		expandableList.put(expandableListTitle.get(9), verd_leg);
+		//expandableList.put(expandableListTitle.get(10), bazar);
 	}
-	
+
 	public void addItemLista(String p, String idLista) {
-		DatabaseHelper mDatabase = new DatabaseHelper(this);
-		mDatabase.insertItem(p, idLista);
+		DbController dbc = new DbController(getApplicationContext());
+		dbc.insertItem(p, idLista);
 	}
 }

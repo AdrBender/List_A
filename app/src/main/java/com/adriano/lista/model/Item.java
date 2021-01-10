@@ -5,6 +5,8 @@ public class Item {
 	private int idItem;
 	private int status = 0;
 	
+	//private int quantidade;
+	
 	public Item(){}
 	
 	Item(String item, int status) {
@@ -34,4 +36,19 @@ public class Item {
     public void setStatus(int status) {
         this.status = status;
     }
+	
+	/*
+	 public String getTotalItens() {
+	 return total_itens;
+	 }
+	 public void setTotalItens(String total_itens) {
+	 this.total_itens = total_itens;
+	 }
+
+	 public String getValorTotal() {
+	 return valor_total;
+	 }
+	 public void setValorTotal(String valor_total) {
+	 this.valor_total = valor_total;
+	 }*/
 }

@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
     package="com.adriano.lista" >
 
+	<uses-permission android:name="android.permission.INTERNET"/>
+	
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_lista_cart"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-		android:resizeableActivity = "true">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+		android:resizeableActivity = "true"
+		tools:replace="android:icon">
+		
+		
+        <activity 
+			android:name=".SplashActivity" 
+			android:theme="@style/AppCompat.TelaSplash"> 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+			<application>
+				<meta-data
+					android:name="com.google.android.gms.ads.APPLICATION_ID"
+					android:value="ca-app-pub-3940256099942544~3347511713"/>
+			</application>
         </activity>
+		<activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+		</activity>
 		<activity
 			android:name=".ListaItensActivity">
 		</activity>
 		<activity
 			android:name=".ProdutosActivity">
+		</activity>
+		<activity
+			android:name=".HistoricoActivity"
+			android:label="@string/activity_hist_name" >
 		</activity>
     </application>
 
