@@ -26,20 +26,6 @@ dependencies {
 	compile 'com.android.support:recyclerview-v7:23.4.0'
 	compile 'com.android.support:design:23.4.0'
 	
-	//compile 'org.mongodb:stitch-android-sdk:4.0.5'//error
-	//compile 'com.github.GrenderG:Toasty:1.5.0'//fail
-	
-	//compile 'org.apache.httpcomponents:httpcore:4.4.1'
-    //compile 'org.apache.httpcomponents:httpclient:4.5'
-
-    //compile 'org.mongodb:mongodb-driver:3.5.0'//ok
-	//compile 'com.squareup.picasso:picasso:2.71828'//error
-	compile 'cn.pedant.sweetalert:library:1.3'//ok
-	//compile 'com.google.android.gms:play-services-ads:11.8.0'//ok
-	compile 'com.google.android.gms:play-services-ads:7.5.0'//ok
-	
-	//compile 'com.github.bumptech.glide:glide:4.11.0'//error
-  	//compile 'com.android.volley:volley:1.1.1'//ok
-	//compile 'br.com.vivareal:cuid-android:0.1.0'//ok
-	//compile 'com.google.code.gson:gson:2.8.6'//ok
+	compile 'cn.pedant.sweetalert:library:1.3'
+	compile 'com.google.android.gms:play-services-ads:7.5.0'
 }

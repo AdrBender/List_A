@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
 
 	private static final String TAG = "com.adriano.lista.SplashActivity";
 	
-	ProgressBar splashProgress; //
+	ProgressBar splashProgress;
 	int SPLASH_TIME = 3000;
 	
     @Override
@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 		splashProgress = (ProgressBar)findViewById(R.id.splash_progress); //
-        progress(); //
+        progress();
 		
 		Thread splash=new Thread() {
             public void run() {
@@ -52,48 +52,10 @@ public class SplashActivity extends AppCompatActivity {
 		}, SPLASH_TIME);
     }*/
 	
-	//Method to run progress bar for 5 seconds
+	//Metodo para rodar a barra de progresso por 5 segundos
     private void progress() {
         ObjectAnimator.ofInt(splashProgress, "progress", 100)
 			.setDuration(3000)
 			.start();
     }
 }
-
-/*
-	<resources>
-
-    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
-
-    </style>
-
-    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-</resources>
-*/
-
-/*
-Thread splash=new Thread() {
-            public void run() {
-
-                try{
-
-// set sleep time
-                    sleep(3*1000);
-                    Intent i =new Intent (getBaseContext(),HomePage.class);
-                    startActivity(i);
-                    finish();
-                }catch (Exception e){
-
-                }
-            }
-
-        };
-        splash.start();
-*/

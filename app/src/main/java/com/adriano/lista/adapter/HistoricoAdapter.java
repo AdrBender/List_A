@@ -24,6 +24,9 @@ import android.annotation.*;
 import com.adriano.lista.model.Lista;
 import com.adriano.lista.R;
 
+/**
+ * @author AdrBender
+ */
 public class HistoricoAdapter extends BaseAdapter {
 
 	private final Context context;
@@ -60,7 +63,7 @@ public class HistoricoAdapter extends BaseAdapter {
 		txt_list_hist.setText(values.get(position).getLista());
 
 		TextView txt_valor = convertView.findViewById(R.id.txt_valor_total_hist);
-		txt_valor.setText("R$ "+values.get(position).getValor().toString());
+		txt_valor.setText("R$: "+values.get(position).getValor().toString());
 
 		TextView txt_data = convertView.findViewById(R.id.txt_data_hist);
 		txt_data.setText(dateFormat.format(values.get(position).getData()));

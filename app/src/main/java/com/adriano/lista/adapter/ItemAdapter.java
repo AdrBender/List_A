@@ -15,7 +15,9 @@ import com.adriano.lista.database.DatabaseHelper;
 import com.adriano.lista.model.Item;
 import com.adriano.lista.database.*;
 
-
+/**
+ * @author AdrBender
+ */
 public class ItemAdapter extends BaseAdapter {
 	private static final String TAG = "com.adriano.lista.ItemAdapter";
 	
@@ -45,7 +47,6 @@ public class ItemAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 		final Item item = listItems.get(position);
-		//final DatabaseHelper database = new DatabaseHelper(context);
 		final DbController dbc = new DbController(context);
         
        	final ViewHolder holder;
@@ -60,7 +61,6 @@ public class ItemAdapter extends BaseAdapter {
         	holder = (ViewHolder)convertView.getTag();
         }
 		holder.textListView.setText(item.getItem());
-		//holder.checkBox.setChecked(item.getStatus());
 		holder.checkBox.setChecked(toBoolean(item.getStatus()));
 		
         holder.checkBox.setOnClickListener(new View.OnClickListener() {

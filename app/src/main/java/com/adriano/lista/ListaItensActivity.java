@@ -25,7 +25,6 @@ import android.view.ViewGroup;
 import android.view.View;
 import android.util.Log;
 
-//import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -49,8 +48,7 @@ public class ListaItensActivity extends AppCompatActivity {
 	Lista l;
 	Intent intent;
 	String nomeLista, idLista;
-	
-	Double valor_total;
+	int quantidade;
 
 	DbController dbc;
 	ListView lvItens;
@@ -74,8 +72,14 @@ public class ListaItensActivity extends AppCompatActivity {
 			nomeLista = intent.getStringExtra("nomeLista");
 			getSupportActionBar().setTitle(nomeLista);
 		}
-		valor_total = 0.0;
-		carregarLista();
+		carregarListaItens();
+		
+		quantidade = dbc.dbInstance.getContador(idLista);
+		if(quantidade > 0) {
+			Toast.makeText(ListaItensActivity.this, "Total de itens: "+quantidade, Toast.LENGTH_SHORT).show();
+		}else {
+			Toast.makeText(ListaItensActivity.this, "Sem itens", Toast.LENGTH_SHORT).show();
+		}
 		
 		//AdView mAdView = (AdView)findViewById(R.id.ad_view);
 		//AdRequest adRequest = new AdRequest.Builder().build();
@@ -96,7 +100,7 @@ public class ListaItensActivity extends AppCompatActivity {
 		});
 	}
 	
-	public void carregarLista() {
+	public void carregarListaItens() {
 		listItems = dbc.getItems(idLista);
 		lvItens.setAdapter(new ItemAdapter(this, listItems));
         
@@ -110,70 +114,11 @@ public class ListaItensActivity extends AppCompatActivity {
 
 	@Override
     protected void onResume() {
-        carregarLista();
-		
-		// Exibe os nomes e id`s dos itens da lista
-		for (Item i : listItems) {
-			StringBuffer sb = new StringBuffer();
-			sb.append("Id "+i.getIdItem()+"\n");
-			sb.append("Item: "+i.getItem());
-			Toast.makeText(ListaItensActivity.this, sb.toString(), Toast.LENGTH_SHORT).show(); 
-		}
+        carregarListaItens();
         super.onResume();
     }
 	
 	private void dialogValorTotal() {
-
-		/*AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-		LayoutInflater inflater = this.getLayoutInflater();
-		final View dialogView = inflater.inflate(R.layout.valor_total_dialog, null);
-		dialogBuilder.setView(dialogView);
-
-		final EditText edt_valor_total = dialogView.findViewById(R.id.edt_total_valor);
-		///edt_valor_total.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-		//dialogBuilder.setTitle("Digite o valor da compra");//usar strings.xml
-		//dialogBuilder.setMessage("Enter text below");
-		dialogBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					
-					if (!name.getText().toString().isEmpty() && !salary.getText().toString().isEmpty()) {
-               if (helper.update(name.getText().toString(), salary.getText().toString())) {
-                  Toast.makeText(MainActivity.this, "Updated", Toast.LENGTH_LONG).show();
-               } else {
-                  Toast.makeText(MainActivity.this, "NOT Updated", Toast.LENGTH_LONG).show();
-               }
-            } else {
-               name.setError("Enter NAME");
-               salary.setError("Enter Salary");
-            }
-					/
-					//double txt_valor_total = Double.parseDouble(edt_valor_total.getText().toString());
-					//Lista valor = new Lista(edt_valor_total.getText().toString());
-					
-					
-					//obs mudar o status e cor do cardview para indicar que aquela lista esta finalizada.
-					Lista listToHist = new Lista();
-					String txt_valor_total = edt_valor_total.getText().toString();
-					listToHist.setIsSaved(true);
-					/boolean l = dbc.insertValorHist(txt_valor_total);
-					
-					if(l == true) {
-					//if(l > -1) {
-						Toast.makeText(ListaItensActivity.this, "Finalizando lista...", Toast.LENGTH_LONG).show();
-					}else {
-						Toast.makeText(ListaItensActivity.this,"Os dados não puderam ser inseridos!",Toast.LENGTH_LONG).show(); 
-					}
-				}
-			});
-		dialogBuilder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					dialog.cancel();
-				}
-			});
-		AlertDialog b = dialogBuilder.create();
-		b.show();
-		}*/
 		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 		LayoutInflater inflater = this.getLayoutInflater();
 		final View v = inflater.inflate(R.layout.valor_total_dialog, null);
@@ -181,21 +126,13 @@ public class ListaItensActivity extends AppCompatActivity {
 		dialogBuilder.setView(v);
 		
 		final EditText edt_valor_total = v.findViewById(R.id.edt_total_valor);
-		//edt_valor_total.setText(String.format("R$ %s", valor_total));
-		//final Double[] valor = {0.0};
-		//edt_valor_total.setInputType(InputType.TYPE_CLASS_NUMBER);
-		//edt_valor_total.setRawInputType(Configuration.KEYBOARD_12KEY);
-		
 		dialogBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int p) {
-					double txt_valor_total = Double.parseDouble(edt_valor_total.getText().toString());
-
-					//if (TextUtils.isEmpty(txt_valor_total)) {
-						//Toast.makeText(ListaItensActivity.this, "Digite algo!", Toast.LENGTH_SHORT).show();
-						//return;
-					//} else {
-					boolean result =  dbc.addCompra(idLista, nomeLista, txt_valor_total, Calendar.getInstance().getTime(), true);
+					double txt_valor_total = 0.d;
+					txt_valor_total = Double.parseDouble(edt_valor_total.getText().toString());
+					
+					boolean result =  dbc.addCompra(idLista, nomeLista, txt_valor_total, Calendar.getInstance().getTime(), quantidade, true);
 					if(result == true) {
 					 	Toast.makeText(ListaItensActivity.this,"Lista Finalizada!",Toast.LENGTH_LONG).show();
 						dbc.deletarLista(idLista);
@@ -226,7 +163,6 @@ public class ListaItensActivity extends AppCompatActivity {
     	switch (item.getItemId()) {
         	case R.id.menu_save:
 				dialogValorTotal();
-            	//Toast.makeText(this, "Finalizando lista...", Toast.LENGTH_LONG).show();
             	return true;
         	default:
             	return super.onOptionsItemSelected(item);

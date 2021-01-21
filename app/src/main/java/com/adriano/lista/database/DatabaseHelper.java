@@ -24,7 +24,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NOME_LISTA = "lista";
 	public static final String COLUMN_DATA = "data_hora";
 	public static final String COLUMN_LISTAS_SALVAS = "listas_salvas";
-	//public static final String COLUMN_TOTAL_ITENS = "total_itens";
 	public static final String COLUMN_VALOR_TOTAL = "valor_total";
 	
     protected static final String COLUMN_ITEM_ID = "item_id";
@@ -33,9 +32,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	protected static final String COLUMN_CHECKED_ITEM = "checked_itens";
 	
 	public static final String COLUMN_COMPRAS_ID = "compras_id";
-	
-	//@SuppressLint("SimpleDateFormat")
-    //protected static SimpleDateFormat dateFormat;
     
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,24 +44,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			+ COLUMN_LISTA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
 			+ COLUMN_DATA + " DATE NOT NULL, "
 			+ COLUMN_LISTAS_SALVAS + " , "
-			+ COLUMN_NOME_LISTA + " TEXT NOT NULL, "
-			+ COLUMN_VALOR_TOTAL + " DECIMAL NOT NULL"
+			+ COLUMN_NOME_LISTA + " TEXT NOT NULL "
 			+")";
 			
 		String tabela_de_produtos = 
 			"CREATE TABLE IF NOT EXISTS " + TABLE_ITENS + "("
 			+ COLUMN_ITEM_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-			+ COLUMN_NOME_ITEM + " TEXT, "
-			+ COLUMN_ITENS_LISTA_ID + " INTEGER, "
-			+ COLUMN_CHECKED_ITEM + " INTEGER, "
-			//+ COLUMN_TOTAL_ITENS + " INTEGER, "
+			+ COLUMN_NOME_ITEM + " TEXT NOT NULL, "
+			+ COLUMN_ITENS_LISTA_ID + " INT NOT NULL, "
+			+ COLUMN_CHECKED_ITEM + " INT NOT NULL, "
 			+"FOREIGN KEY ("+COLUMN_ITENS_LISTA_ID+") REFERENCES "+TABLE_LISTAS+"("+COLUMN_LISTA_ID+")"
 			+")";
 			
 		String tabela_de_compras = 
 			"CREATE TABLE IF NOT EXISTS " + TABLE_HISTORICO + "("
 			+ COLUMN_COMPRAS_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-			+ COLUMN_LISTA_ID + " INTEGER NOT NULL, "
+			+ COLUMN_LISTA_ID + " INT NOT NULL, "
 			+ COLUMN_NOME_LISTA + " TEXT NOT NULL, "
 			+ COLUMN_DATA + " DATE NOT NULL, "
 			+ COLUMN_LISTAS_SALVAS + " , "

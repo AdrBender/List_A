@@ -21,19 +21,25 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.adriano.lista.database.DbController;
+import com.adriano.lista.database.DatabaseHelper;
 import com.adriano.lista.model.Lista;
 import com.adriano.lista.R;
 
+/**
+ * @author AdrBender
+ */
 public class ListaAdapter extends BaseAdapter {
 	
-	private final Context context;
+	private Context context;
 	private List<Lista> values;
 	LayoutInflater inflater;
+	
+	private DbController dbc;
 	
 	@SuppressLint("SimpleDateFormat")
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     
-
 	public ListaAdapter(Context context, List<Lista> values) {
 		this.context = context;
 		this.values = values;
@@ -59,9 +65,6 @@ public class ListaAdapter extends BaseAdapter {
 		
 		TextView txt_list = convertView.findViewById(R.id.txt_list_row);
 		txt_list.setText(values.get(position).getLista());
-		
-		//TextView txt_total_itens = convertView.findViewById(R.id.txt_total_itens_row);
-		//txt_total_itens.setText(values.get(position).isSaved() ? "1" : "0");
 		
 		TextView txt_data = convertView.findViewById(R.id.txt_data_row);
 		txt_data.setText(dateFormat.format(values.get(position).getData()));

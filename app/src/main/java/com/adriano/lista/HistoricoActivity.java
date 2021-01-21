@@ -3,6 +3,7 @@ package com.adriano.lista;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.view.MenuItem;
@@ -18,19 +19,22 @@ import com.adriano.lista.model.Lista;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * @author AdrBender
  */
 public class HistoricoActivity extends AppCompatActivity {
 	
 	DatabaseHelper dbh;
-	ListView lvHistorico;
-	
 	DbController dbc;
 	
-	HistoricoAdapter adapter;
+	ListView lvHistorico;
 	List<Lista> listLista;
 	ArrayList<String> list = new ArrayList<>();
+	
+	Lista lista;
+	HistoricoAdapter adapter;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +48,6 @@ public class HistoricoActivity extends AppCompatActivity {
 		
 		adapter = new HistoricoAdapter(HistoricoActivity.this, listLista); 
 		lvHistorico.setAdapter(adapter);
-		/*
-		for (Lista l : listLista) {
-			StringBuffer sb = new StringBuffer();
-			sb.append("Id "+l.getId()+"\n");
-			sb.append("Lista: "+l.getLista()+"\n");
-			sb.append("isSaved: "+l.getIsSaved()+"\n");
-			sb.append("Valor: "+l.getValor());
-			Toast.makeText(this, sb.toString(), Toast.LENGTH_LONG).show(); 
-		}*/
-/*
-        for(Lista l : listLista) {
-            String r  = "Nome : "+l.getLista() 
-						+ " - Data : " + l.getData() 
-						+ " - Hora : " + l.getHora();
-            list.add(r);
-        }
-		 */
 		
 		lvHistorico.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override 
@@ -69,13 +56,12 @@ public class HistoricoActivity extends AppCompatActivity {
 				
 				Lista li = (Lista)parent.getItemAtPosition(position);
 				//String idLista = String.valueOf(li.getId());
-				
 				//Toast.makeText(getApplicationContext(), "Id da Lista: "+idLista, Toast.LENGTH_SHORT).show();
 				
 				//Bundle bundle = new Bundle();
 				//bundle.putInt("id", idLista);
 				//bundle.putString("nomeLista", nomeLista);
-				//-Intent intent = new Intent(getApplicationContext(), ListaItensActivity.class);
+				//Intent intent = new Intent(getApplicationContext(), DetalhesActivity.class);
                 //intent.putExtras(bundle);
 				//intent.putExtra("id",idLista);
 				//intent.putExtra("nomeLista", nomeLista);
@@ -83,6 +69,22 @@ public class HistoricoActivity extends AppCompatActivity {
                 //startActivity(intent);
 			}
 		});
+	}
+	
+	public void apagarHistorico() {
+		dbc.deletarHistorico();
+		new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+			.setTitleText("Histórico Apagado!")
+			.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+				@Override
+				public void onClick(SweetAlertDialog sDialog) {
+					sDialog.setConfirmText("OK")
+					.setConfirmClickListener(null)
+					.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+					finish();
+				}
+			})
+			.show();
 	}
 	
 	@Override
@@ -96,14 +98,8 @@ public class HistoricoActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.delete_hist:
-                Toast.makeText(HistoricoActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+                apagarHistorico();
                 break;
-            /*case R.id.action_settings:
-                Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_about_us:
-                Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
-                break;*/
         }
         return super.onOptionsItemSelected(item);
     }

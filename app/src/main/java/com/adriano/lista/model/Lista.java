@@ -4,28 +4,29 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.*;
 
+/**
+ * @author AdrBender
+ */
 public class Lista {
 	
 	Integer id;
 	String lista;
 	Date data;
 	Boolean isSaved;
-	 
-	//List<Lista> listas;
+	int quantidade=0;
 	Double valor;
 
 	public Lista() {
 		this.data = Calendar.getInstance().getTime();
 		this.isSaved = false;
     }
-/*
-	public Lista(Integer id, String lista, Double valor, Date data, Boolean isSaved) {
-		this.setId(id);
+	
+	public Lista(String lista, Date data, boolean isSaved) {
 		this.setLista(lista);
 		this.setValor(valor);
 		this.setData(data);
 		this.setIsSaved(isSaved);
-    }*/
+    }
 	
     public Lista(String lista, Double valor, Date data, boolean isSaved) {
 		this.setLista(lista);
@@ -33,12 +34,6 @@ public class Lista {
 		this.setData(data);
 		this.setIsSaved(isSaved);
     }
-	/*
-	public Lista(Double valor, boolean isSaved, List<Lista> listas) {
-		this.setValor(valor);
-		this.isSaved = isSaved;
-		this.listas = listas;
-    }*/
 	
     public Integer getId() {
         return id;
@@ -53,13 +48,6 @@ public class Lista {
     public void setLista(String lista) {
         this.lista = lista;
     }
-	/*
-	public List<Lista> getListas() {
-        return listas;
-    }
-	public void setListas(List<Lista> listas) {
-        this.listas = listas;
-    }*/
 	
 	public Date getData() {
         return data;

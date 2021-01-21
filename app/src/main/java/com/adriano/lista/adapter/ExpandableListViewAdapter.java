@@ -16,6 +16,9 @@ import android.app.*;
 
 import com.adriano.lista.R;
 
+/**
+ * @author AdrBender
+ */
 public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     private Context context;
